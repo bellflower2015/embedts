@@ -61,6 +61,12 @@
 
     if (arg['fs'] && arg['fs'] == 1) {
         fs = 1;
+        $('*').css({'cssText':
+            'margin:  0 !important; padding: 0 !important; border: 0 !important;'
+        });
+        $('body').css({'cssText':
+            'margin:  0 !important; padding: 0 !important; border: 0 !important; overflow: hidden !important; background: black !important;'
+        })
         width  = $(window).width();
         height = $(window).height();
         _width  = Math.floor(height / rY) * rX;
@@ -89,9 +95,9 @@
     var _path = '<?php echo dirname($_SERVER["SCRIPT_NAME"]); ?>';
     if (_path.length > 0) path = _path;
 
-    var content = '<iframe src="'+path+'/ts.php?ks='+src+'" width="'+width+'" height="'+height+'" frameborder="0" marginheight="0" marginwidth="0" scrolling="no"></iframe>';
+    var content = '<iframe src="'+path+'/ts.php?ks='+src+'" width="'+width+'" height="'+height+'" border="0" frameborder="0" framespacing="0" hspace="0" vspace="0" marginheight="0" marginwidth="0" scrolling="no"></iframe>';
 
-    if (fs) content = '<style>*{margin:0 !important;padding:0 !important;}body{background:black !important;}</style><div style="width:'+$(window).width()+'px;height:'+$(window).height()+'px;display:table-cell;text-align:center;vertical-align:middle;">'+content+'</div>';
+    if (fs) content = '<div style="width:'+$(window).width()+'px;height:'+$(window).height()+'px;display:table-cell;text-align:center;vertical-align:middle;">'+content+'</div>';
 
     if (width > 0) $(script).before(content);
 })();
